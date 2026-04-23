@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>TUKE ICT Effort Analysis</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', sans-serif; background: #f0f4f8; color: #1a2535; font-size: 13px; }
+.header { background: linear-gradient(135deg, #1a3a5c, #2563a8); color: white; padding: 18px 24px; }
+.header h1 { font-size: 18px; font-weight: 700; }
+.header p { font-size: 12px; opacity: 0.8; margin-top: 4px; }
+.tabs { display: flex; background: #fff; border-bottom: 2px solid #e2e8f0; padding: 0 24px; }
+.tab { padding: 10px 18px; cursor: pointer; font-size: 12px; font-weight: 600; color: #64748b; border-bottom: 3px solid transparent; margin-bottom: -2px; }
+.tab.active { color: #2563a8; border-bottom-color: #2563a8; }
+.content { display: none; padding: 20px 24px; }
+.content.active { display: block; }
+.table-wrap { overflow-x: auto; border-radius: 10px; box-shadow: 0 1px 6px rgba(0,0,0,0.08); }
+table { width: 100%; border-collapse: collapse; background: white; }
+thead tr { background: #1a3a5c; color: white; }
+thead th { padding: 9px 11px; text-align: center; font-size: 11px; font-weight: 600; white-space: nowrap; }
+thead th:first-child { text-align: left; min-width: 200px; }
+tbody tr:nth-child(even) { background: #f8fafc; }
+tbody tr:hover { background: #eff6ff; }
+tbody td { padding: 7px 11px; text-align: center; font-size: 12px; border-bottom: 1px solid #e2e8f0; }
+tbody td:first-child { text-align: left; font-weight: 500; }
+.phase-row td { background: #dbeafe !important; font-weight: 700; color: #1e40af; }
+.total-row td { background: #1a3a5c !important; color: white !important; font-weight: 700; }
+.hl { background: #fef3c7; border-radius: 4px; padding: 1px 5px; font-weight: 700; color: #92400e; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(155px, 1fr)); gap: 14px; margin-bottom: 20px; }
+.card { background: white; border-radius: 10px; padding: 14px 16px; box-shadow: 0 1px 5px rgba(0,0,0,0.08); border-left: 4px solid; }
+.card-label { font-size: 11px; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+.card-value { font-size: 22px; font-weight: 800; margin-top: 4px; }
+.card-sub { font-size: 11px; color: #94a3b8; margin-top: 2px; }
+.c1{border-color:#2563a8}.c1 .card-value{color:#2563a8}
+.c2{border-color:#059669}.c2 .card-value{color:#059669}
+.c3{border-color:#d97706}.c3 .card-value{color:#d97706}
+.c4{border-color:#7c3aed}.c4 .card-value{color:#7c3aed}
+.c5{border-color:#dc2626}.c5 .card-value{color:#dc2626}
+.bar-section { background: white; border-radius: 10px; padding: 18px; box-shadow: 0 1px 5px rgba(0,0,0,0.08); margin-bottom: 16px; }
+.bar-title { font-size: 13px; font-weight: 700; margin-bottom: 14px; }
+.bar-row { display: flex; align-items: center; margin-bottom: 10px; }
+.bar-label { width: 130px; font-size: 11px; flex-shrink: 0; }
+.bar-track { flex: 1; height: 20px; background: #f1f5f9; border-radius: 4px; overflow: hidden; display: flex; }
+.bar-seg { height: 100%; }
+.bar-total { width: 55px; text-align: right; font-size: 11px; font-weight: 700; padding-left: 8px; }
+.legend { display: flex; gap: 14px; margin-bottom: 14px; flex-wrap: wrap; }
+.leg { display: flex; align-items: center; gap: 5px; font-size: 11px; }
+.leg-dot { width: 12px; height: 12px; border-radius: 3px; }
+.note-box { border-radius: 8px; padding: 12px 16px; margin-bottom: 16px; font-size: 12px; line-height: 1.6; }
+.note-blue { background: #eff6ff; border: 1px solid #bfdbfe; color: #1e40af; }
+.note-red { background: #fef2f2; border: 1px solid #fecaca; color: #991b1b; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 10px; font-weight: 700; }
+.bp{background:#dcfce7;color:#166534}.br{background:#fef3c7;color:#92400e}.bt{background:#e0e7ff;color:#3730a3}.bh{background:#fce7f3;color:#9d174d}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>&#x1F4CA; Resource &amp; Effort Analysis &#x2014; Moderniz&#xe1;cia ICT infra TUKE</h1>
+  <p>01.06.2026 &#x2013; 27.08.2026 &nbsp;&#xb7;&nbsp; 1 Man-day = 8 hrs &nbsp;&#xb7;&nbsp; D4 deadline 31.08.2026</p>
+</div>
+<div class="tabs">
+  <div class="tab active" onclick="showTab('overview',this)">Overview</div>
+  <div class="tab" onclick="showTab('effort',this)">Effort per Person / WP</div>
+  <div class="tab" onclick="showTab('external',this)">External Headcount</div>
+  <div class="tab" onclick="showTab('allocation',this)">Work Allocation</div>
+</div>
+
+<div id="tab-overview" class="content active">
+  <div class="cards">
+    <div class="card c1"><div class="card-label">Total Project</div><div class="card-value">330 MD</div><div class="card-sub">All roles combined</div></div>
+    <div class="card c2"><div class="card-label">Internal Effort</div><div class="card-value">59.4 MD</div><div class="card-sub">PM · Stakeholder · QA · Finance</div></div>
+    <div class="card c3"><div class="card-label">Tech Guarantors</div><div class="card-value">141.2 MD</div><div class="card-sub">2 persons · 100% in realization</div></div>
+    <div class="card c4"><div class="card-label">External Workers</div><div class="card-value">127.5 MD</div><div class="card-sub">1,020 hrs total scope</div></div>
+    <div class="card c5"><div class="card-label">Peak Headcount</div><div class="card-value">8 workers</div><div class="card-sub">08&#x2013;15 Jul (WP 1.3.2 + 1.3.3)</div></div>
+  </div>
+  <div class="bar-section">
+    <div class="bar-title">Effort by Phase (Man-days)</div>
+    <div class="legend">
+      <div class="leg"><div class="leg-dot" style="background:#2563a8"></div>PM</div>
+      <div class="leg"><div class="leg-dot" style="background:#059669"></div>Stakeholder</div>
+      <div class="leg"><div class="leg-dot" style="background:#d97706"></div>Quality</div>
+      <div class="leg"><div class="leg-dot" style="background:#7c3aed"></div>Finance</div>
+      <div class="leg"><div class="leg-dot" style="background:#dc2626"></div>Tech Garant &#xd7;2</div>
+      <div class="leg"><div class="leg-dot" style="background:#94a3b8"></div>Workers</div>
+    </div>
+    <div id="bars"></div>
+  </div>
+</div>
+
+<div id="tab-effort" class="content">
+  <div class="table-wrap"><table><thead><tr>
+    <th style="text-align:left">Work Package</th><th>Dur(d)</th><th>PM MD</th><th>Stkhdr MD</th><th>QA MD</th><th>Fin MD</th><th>TG(x2) MD</th><th>Workers MD</th><th>TOTAL MD</th>
+  </tr></thead><tbody id="etbody"></tbody></table></div>
+</div>
+
+<div id="tab-external" class="content">
+  <div class="note-box note-red"><strong>&#x26a0;&#xfe0f; Peak Risk: 08&#x2013;15 July 2026</strong><br>WP 1.3.2 (copper, 5d) and WP 1.3.3 (fibre, 3d) overlap. You need <strong>8 workers on site simultaneously</strong> &#x2014; 5 for copper + 3 for fibre. Confirm scaffold access, PPE, and site supervision before M4 (01.07).</div>
+  <div class="table-wrap"><table><thead><tr>
+    <th style="text-align:left">Work Package</th><th>Phase</th><th>Dur(d)</th><th>Wrk-hrs</th><th>Wrk-days</th><th>Alloc%</th><th>Gross days</th><th>Min HC</th><th>Recommended HC</th>
+  </tr></thead><tbody id="hctbody"></tbody></table></div>
+</div>
+
+<div id="tab-allocation" class="content">
+  <div class="note-box note-blue"><strong>Allocation rules:</strong> Preparation = <span class="badge bp">100%</span> internal + TG. &nbsp;Realization = <span class="badge br">40&#x2013;60%</span> task-specific. &nbsp;Testing = <span class="badge bt">80%</span> QA. &nbsp;Handover = <span class="badge bh">100%</span> PM + Finance. Workers active only in realization WPs (1.3.x, 1.4.x, 1.5.x).</div>
+  <div class="table-wrap"><table><thead><tr>
+    <th style="text-align:left">Work Package</th><th>Phase Type</th><th>PM%</th><th>Stkhdr%</th><th>QA%</th><th>Fin%</th><th>TG%</th><th>Wrkrs%</th><th style="text-align:left">Rationale</th>
+  </tr></thead><tbody id="altbody"></tbody></table></div>
+</div>
+
+<script>
+var wps=[
+  {id:'1.1.1',name:'Approved project baseline',dur:5.63,pm:2.5,stk:0,qa:0,fin:0,tg:2.0,wrk:0,phase:'Planning'},
+  {id:'1.1.2',name:'Schedule & milestones (MSP)',dur:4.5,pm:2.5,stk:0,qa:0,fin:0,tg:2.0,wrk:0,phase:'Planning'},
+  {id:'1.1.3',name:'Communication plan',dur:5.0,pm:1.0,stk:3.0,qa:0,fin:0,tg:1.0,wrk:0,phase:'Planning'},
+  {id:'1.1.4',name:'Risk, quality & acceptance',dur:7.0,pm:0.5,stk:0,qa:4.5,fin:0,tg:1.5,wrk:0,phase:'Planning'},
+  {id:'1.1.5',name:'Budget & procurement plan',dur:19.0,pm:1.0,stk:0,qa:0,fin:7.0,tg:2.5,wrk:0,phase:'Planning'},
+  {id:'1.2.1',name:'Requirements & inventory',dur:4.0,pm:0.5,stk:1.5,qa:0.5,fin:0,tg:3.5,wrk:0,phase:'Design'},
+  {id:'1.2.2',name:'Passive cabling design',dur:5.0,pm:0.5,stk:0,qa:1.0,fin:0,tg:5.0,wrk:0,phase:'Design'},
+  {id:'1.2.3',name:'Network & Wi-Fi design',dur:5.0,pm:0.5,stk:0,qa:1.0,fin:0,tg:5.0,wrk:0,phase:'Design'},
+  {id:'1.2.4',name:'Server room security design',dur:4.0,pm:0.5,stk:0,qa:1.0,fin:0,tg:4.0,wrk:0,phase:'Design'},
+  {id:'1.2.5',name:'Test & handover plan',dur:4.0,pm:0.5,stk:0.5,qa:1.5,fin:0,tg:3.5,wrk:0,phase:'Design'},
+  {id:'1.3.1',name:'Cable trays ready',dur:6.0,pm:0.5,stk:0,qa:1.0,fin:0,tg:6.0,wrk:24,phase:'Passive Infra'},
+  {id:'1.3.2',name:'Data cables pulled & terminated',dur:9.0,pm:0.5,stk:0,qa:2.0,fin:0,tg:9.0,wrk:40,phase:'Passive Infra'},
+  {id:'1.3.3',name:'Fiber pulled & terminated',dur:6.0,pm:0.5,stk:0,qa:1.5,fin:0,tg:6.0,wrk:24,phase:'Passive Infra'},
+  {id:'1.3.4',name:'Racks & patch panels done',dur:16.0,pm:0.5,stk:0,qa:1.0,fin:0,tg:5.0,wrk:16,phase:'Passive Infra'},
+  {id:'1.3.5',name:'Port labeling & list done',dur:4.0,pm:0.5,stk:0,qa:2.0,fin:0,tg:4.0,wrk:8,phase:'Passive Infra'},
+  {id:'1.4.1',name:'Switches installed',dur:6.0,pm:0.5,stk:0,qa:1.0,fin:0,tg:7.0,wrk:16,phase:'Active Network'},
+  {id:'1.4.2',name:'Functional Wi-Fi APs',dur:4.0,pm:0.5,stk:0,qa:0.5,fin:0,tg:4.5,wrk:8,phase:'Active Network'},
+  {id:'1.4.3',name:'Functional connectivity',dur:3.0,pm:0.5,stk:0,qa:1.5,fin:0,tg:3.0,wrk:8,phase:'Active Network'},
+  {id:'1.5.1',name:'Server room: camera + NVR',dur:3.0,pm:0.5,stk:0,qa:0.5,fin:0,tg:3.0,wrk:8,phase:'Srv Security'},
+  {id:'1.5.2',name:'Server room: access reader',dur:3.0,pm:0.5,stk:0,qa:0.5,fin:0,tg:3.0,wrk:8,phase:'Srv Security'},
+  {id:'1.6.1',name:'Cabling measurements',dur:6.0,pm:0.5,stk:0,qa:3.0,fin:0,tg:6.0,wrk:0,phase:'Test & Handover'},
+  {id:'1.6.2',name:'Functional tests LAN/WiFi/cam',dur:12.0,pm:0.5,stk:0,qa:3.0,fin:0,tg:3.0,wrk:0,phase:'Test & Handover'},
+  {id:'1.6.3',name:'Final documentation',dur:4.0,pm:0.5,stk:2.5,qa:0,fin:0,tg:2.0,wrk:0,phase:'Test & Handover'},
+  {id:'1.6.4',name:'Training & handover (D4)',dur:5.38,pm:2.0,stk:1.5,qa:0,fin:5.0,tg:3.0,wrk:0,phase:'Test & Handover'}
+];
+
+var allocs=[
+  {id:'1.1.1',type:'Preparation',pm:100,stk:0,qa:0,fin:0,tg:100,wrk:0,note:'Full PM + TG to lock scope'},
+  {id:'1.1.2',type:'Preparation',pm:100,stk:0,qa:0,fin:0,tg:100,wrk:0,note:'PM + TG build MSP schedule'},
+  {id:'1.1.3',type:'Preparation',pm:50,stk:100,qa:0,fin:0,tg:50,wrk:0,note:'Stakeholder leads comms plan'},
+  {id:'1.1.4',type:'Preparation',pm:25,stk:0,qa:100,fin:0,tg:50,wrk:0,note:'QA owns risk register + checklists'},
+  {id:'1.1.5',type:'Preparation',pm:25,stk:0,qa:0,fin:100,tg:50,wrk:0,note:'Finance aligns BoM + procurement'},
+  {id:'1.2.1',type:'Preparation',pm:25,stk:50,qa:25,fin:0,tg:100,wrk:0,note:'TG 100%: technical requirement capture'},
+  {id:'1.2.2',type:'Preparation',pm:25,stk:0,qa:50,fin:0,tg:100,wrk:0,note:'TG 100%: cabling topology design'},
+  {id:'1.2.3',type:'Preparation',pm:25,stk:0,qa:50,fin:0,tg:100,wrk:0,note:'TG 100%: switching + WiFi layout'},
+  {id:'1.2.4',type:'Preparation',pm:25,stk:0,qa:50,fin:0,tg:100,wrk:0,note:'TG 100%: CCTV + access design'},
+  {id:'1.2.5',type:'Preparation',pm:25,stk:25,qa:75,fin:0,tg:100,wrk:0,note:'TG 100%: defines test criteria'},
+  {id:'1.3.1',type:'Realization',pm:20,stk:0,qa:40,fin:0,tg:100,wrk:50,note:'Workers 50%; QA spot-checks trays'},
+  {id:'1.3.2',type:'Realization',pm:20,stk:0,qa:55,fin:0,tg:100,wrk:55,note:'Workers 55%; copper pull + termination'},
+  {id:'1.3.3',type:'Realization',pm:20,stk:0,qa:60,fin:0,tg:100,wrk:60,note:'Workers 60%; fibre = highest skill'},
+  {id:'1.3.4',type:'Realization',pm:20,stk:0,qa:40,fin:0,tg:100,wrk:45,note:'Workers 45%; rack mechanical work'},
+  {id:'1.3.5',type:'Realization',pm:20,stk:0,qa:80,fin:0,tg:100,wrk:40,note:'Workers 40%; QA 80%: labeling audit'},
+  {id:'1.4.1',type:'Realization',pm:20,stk:0,qa:40,fin:0,tg:100,wrk:60,note:'Workers 60%; switch config is skilled'},
+  {id:'1.4.2',type:'Realization',pm:20,stk:0,qa:25,fin:0,tg:100,wrk:55,note:'Workers 55%; AP mount + basic setup'},
+  {id:'1.4.3',type:'Realization',pm:20,stk:0,qa:60,fin:0,tg:100,wrk:50,note:'QA 60%: documents test results'},
+  {id:'1.5.1',type:'Realization',pm:20,stk:0,qa:40,fin:0,tg:100,wrk:50,note:'Workers 50%; camera + NVR install'},
+  {id:'1.5.2',type:'Realization',pm:20,stk:0,qa:40,fin:0,tg:100,wrk:50,note:'Workers 50%; reader + access config'},
+  {id:'1.6.1',type:'Testing',pm:20,stk:0,qa:80,fin:0,tg:100,wrk:0,note:'QA 80%: certify + document all links'},
+  {id:'1.6.2',type:'Testing',pm:20,stk:0,qa:80,fin:0,tg:100,wrk:0,note:'QA 80%: functional test protocol'},
+  {id:'1.6.3',type:'Handover',pm:25,stk:100,qa:0,fin:0,tg:80,wrk:0,note:'Stakeholder 100%: as-built docs'},
+  {id:'1.6.4',type:'Handover',pm:100,stk:50,qa:0,fin:100,tg:80,wrk:0,note:'PM 100% sign-off; Finance: final billing'}
+];
+
+var extHC=[
+  {id:'1.3.1',phase:'Passive Infra',dur:6,wh:24,wd:3.0,al:50,gd:6.0,min:1,rec:2,note:'Add 1 for trench safety'},
+  {id:'1.3.2',phase:'Passive Infra',dur:9,wh:40,wd:5.0,al:55,gd:9.9,min:2,rec:5,note:'PEAK — copper pull crew'},
+  {id:'1.3.3',phase:'Passive Infra',dur:6,wh:24,wd:3.0,al:60,gd:5.0,min:1,rec:3,note:'OVERLAPS 1.3.2 — fibre specialists'},
+  {id:'1.3.4',phase:'Passive Infra',dur:5,wh:16,wd:2.0,al:45,gd:4.4,min:1,rec:2,note:'Rack assembly + PDU mount'},
+  {id:'1.3.5',phase:'Passive Infra',dur:4,wh:8,wd:1.0,al:40,gd:2.5,min:1,rec:1,note:'Labeling — 1 sufficient'},
+  {id:'1.4.1',phase:'Active Network',dur:6,wh:16,wd:2.0,al:60,gd:3.3,min:1,rec:2,note:'Network tech — switch config'},
+  {id:'1.4.2',phase:'Active Network',dur:4,wh:8,wd:1.0,al:55,gd:1.8,min:1,rec:1,note:'AP mount + SSID setup'},
+  {id:'1.4.3',phase:'Active Network',dur:3,wh:8,wd:1.0,al:50,gd:2.0,min:1,rec:1,note:'Test connectivity, log results'},
+  {id:'1.5.1',phase:'Srv Security',dur:3,wh:8,wd:1.0,al:50,gd:2.0,min:1,rec:1,note:'Camera + NVR specialist'},
+  {id:'1.5.2',phase:'Srv Security',dur:3,wh:8,wd:1.0,al:50,gd:2.0,min:1,rec:1,note:'Access control specialist'}
+];
+
+// ---- EFFORT TABLE ----
+var phases=[...new Set(wps.map(function(w){return w.phase}))];
+var etbody=document.getElementById('etbody');
+var totals={pm:0,stk:0,qa:0,fin:0,tg:0,wrk:0};
+phases.forEach(function(ph){
+  var phWps=wps.filter(function(w){return w.phase===ph});
+  var pt={pm:0,stk:0,qa:0,fin:0,tg:0,wrk:0};
+  phWps.forEach(function(w){pt.pm+=w.pm;pt.stk+=w.stk;pt.qa+=w.qa;pt.fin+=w.fin;pt.tg+=w.tg;pt.wrk+=w.wrk/8;});
+  var ptot=pt.pm+pt.stk+pt.qa+pt.fin+pt.tg+pt.wrk;
+  var tr=document.createElement('tr');tr.className='phase-row';
+  tr.innerHTML='<td>'+ph+'</td><td></td><td>'+pt.pm.toFixed(1)+'</td><td>'+pt.stk.toFixed(1)+'</td><td>'+pt.qa.toFixed(1)+'</td><td>'+pt.fin.toFixed(1)+'</td><td>'+pt.tg.toFixed(1)+'</td><td>'+pt.wrk.toFixed(1)+'</td><td><strong>'+ptot.toFixed(1)+'</strong></td>';
+  etbody.appendChild(tr);
+  phWps.forEach(function(w){
+    var tot=w.pm+w.stk+w.qa+w.fin+w.tg+w.wrk/8;
+    totals.pm+=w.pm;totals.stk+=w.stk;totals.qa+=w.qa;totals.fin+=w.fin;totals.tg+=w.tg;totals.wrk+=w.wrk/8;
+    var r=document.createElement('tr');
+    r.innerHTML='<td style="padding-left:20px">'+w.id+' '+w.name+'</td><td>'+w.dur+'</td><td>'+w.pm.toFixed(1)+'</td><td>'+(w.stk>0?w.stk.toFixed(1):'—')+'</td><td>'+(w.qa>0?w.qa.toFixed(1):'—')+'</td><td>'+(w.fin>0?w.fin.toFixed(1):'—')+'</td><td>'+w.tg.toFixed(1)+'</td><td>'+(w.wrk>0?(w.wrk/8).toFixed(1):'—')+'</td><td><strong>'+tot.toFixed(1)+'</strong></td>';
+    etbody.appendChild(r);
+  });
+});
+var grand=totals.pm+totals.stk+totals.qa+totals.fin+totals.tg+totals.wrk;
+var tr2=document.createElement('tr');tr2.className='total-row';
+tr2.innerHTML='<td>GRAND TOTAL</td><td></td><td>'+totals.pm.toFixed(1)+'</td><td>'+totals.stk.toFixed(1)+'</td><td>'+totals.qa.toFixed(1)+'</td><td>'+totals.fin.toFixed(1)+'</td><td>'+totals.tg.toFixed(1)+'</td><td>'+totals.wrk.toFixed(1)+'</td><td>'+grand.toFixed(1)+'</td>';
+etbody.appendChild(tr2);
+
+// ---- HC TABLE ----
+var hctbody=document.getElementById('hctbody');
+var hctot={wh:0,wd:0,gd:0,rec:0};
+extHC.forEach(function(h){
+  hctot.wh+=h.wh;hctot.wd+=h.wd;hctot.gd+=h.gd;hctot.rec+=h.rec;
+  var peak=(h.id==='1.3.2'||h.id==='1.3.3')?' 🔴':'';
+  var r=document.createElement('tr');
+  r.innerHTML='<td style="padding-left:8px">'+h.id+' '+wps.find(function(w){return w.id===h.id}).name+'</td><td>'+h.phase+'</td><td>'+h.dur+'</td><td>'+h.wh+'</td><td>'+h.wd.toFixed(1)+'</td><td>'+h.al+'%</td><td>'+h.gd.toFixed(1)+'</td><td>'+h.min+'</td><td><span class="hl">'+h.rec+peak+'</span><br><small style="color:#64748b">'+h.note+'</small></td>';
+  hctbody.appendChild(r);
+});
+var htr=document.createElement('tr');htr.className='total-row';
+htr.innerHTML='<td>TOTAL EXTERNAL</td><td></td><td></td><td>'+hctot.wh+'</td><td>'+hctot.wd.toFixed(1)+'</td><td></td><td>'+hctot.gd.toFixed(1)+'</td><td></td><td>19 peak concurrent (08–15 Jul)</td>';
+hctbody.appendChild(htr);
+
+// ---- ALLOCATION TABLE ----
+var altbody=document.getElementById('altbody');
+var tbadge={Preparation:'bp',Realization:'br',Testing:'bt',Handover:'bh'};
+allocs.forEach(function(a){
+  var r=document.createElement('tr');
+  r.innerHTML='<td style="padding-left:8px">'+a.id+' '+wps.find(function(w){return w.id===a.id}).name+'</td><td><span class="badge '+tbadge[a.type]+'">'+a.type+'</span></td><td>'+(a.pm?a.pm+'%':'—')+'</td><td>'+(a.stk?a.stk+'%':'—')+'</td><td>'+(a.qa?a.qa+'%':'—')+'</td><td>'+(a.fin?a.fin+'%':'—')+'</td><td>'+a.tg+'%</td><td>'+(a.wrk?a.wrk+'%':'—')+'</td><td style="text-align:left;font-size:11px;color:#475569">'+a.note+'</td>';
+  altbody.appendChild(r);
+});
+
+// ---- PHASE BAR CHART ----
+var bars=document.getElementById('bars');
+var maxTot=0;
+var phaseData=phases.map(function(ph){
+  var phWps=wps.filter(function(w){return w.phase===ph});
+  var d={ph:ph,pm:0,stk:0,qa:0,fin:0,tg:0,wrk:0};
+  phWps.forEach(function(w){d.pm+=w.pm;d.stk+=w.stk;d.qa+=w.qa;d.fin+=w.fin;d.tg+=w.tg;d.wrk+=w.wrk/8;});
+  d.tot=d.pm+d.stk+d.qa+d.fin+d.tg+d.wrk;
+  if(d.tot>maxTot)maxTot=d.tot;
+  return d;
+});
+phaseData.forEach(function(p){
+  function w(v){return((v/maxTot)*100).toFixed(1)+'%'}
+  bars.innerHTML+='<div class="bar-row"><div class="bar-label">'+p.ph+'</div><div class="bar-track"><div class="bar-seg" style="width:'+w(p.pm)+';background:#2563a8"></div><div class="bar-seg" style="width:'+w(p.stk)+';background:#059669"></div><div class="bar-seg" style="width:'+w(p.qa)+';background:#d97706"></div><div class="bar-seg" style="width:'+w(p.fin)+';background:#7c3aed"></div><div class="bar-seg" style="width:'+w(p.tg)+';background:#dc2626"></div><div class="bar-seg" style="width:'+w(p.wrk)+';background:#94a3b8"></div></div><div class="bar-total">'+p.tot.toFixed(0)+' MD</div></div>';
+});
+
+function showTab(id,el){
+  document.querySelectorAll('.content').forEach(function(c){c.classList.remove('active');});
+  document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active');});
+  document.getElementById('tab-'+id).classList.add('active');
+  el.classList.add('active');
+}
+</script>
+</body>
+</html>
